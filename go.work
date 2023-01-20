@@ -1,0 +1,9 @@
+go 1.19
+
+use ./keys
+
+use ./balance
+
+use ./store
+
+use ./wallet
