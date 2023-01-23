@@ -10,6 +10,7 @@
 
 - [Balance](https://github.com/PedroGaletti/blockchain/tree/main/balance/main.go) - Get the balance from transaction
 - [Deploy](https://github.com/PedroGaletti/blockchain/tree/main/deploy/main.go) - Deploy the smart contract
+- [Interact](https://github.com/PedroGaletti/blockchain/tree/main/interact/main.go) - Interact with the deployed smart contract
 - [Contract](https://github.com/PedroGaletti/blockchain/tree/main/deploy/contracts/contract.sol) - Example of smart contract
 - [Keys](https://github.com/PedroGaletti/blockchain/tree/main/keys/main.go) - Generate key (private, public, address)
 - [Nets](https://github.com/PedroGaletti/blockchain/tree/main/nets/main.go) - Working with networks in the blockchain

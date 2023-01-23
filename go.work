@@ -4,6 +4,8 @@ use ./balance
 
 use ./deploy
 
+use ./interact
+
 use ./keys
 
 use ./nets
