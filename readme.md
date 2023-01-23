@@ -9,8 +9,11 @@
 ## Content
 
 - [Balance](https://github.com/PedroGaletti/blockchain/tree/main/balance/main.go) - Get the balance from transaction
+- [Contracts](https://github.com/PedroGaletti/blockchain/tree/main/contracts/main.go) - How to build smart contracts
 - [Keys](https://github.com/PedroGaletti/blockchain/tree/main/keys/main.go) - Generate key
+- [Nets](https://github.com/PedroGaletti/blockchain/tree/main/nets/main.go) - Working with networks in the blockchain
 - [Store](https://github.com/PedroGaletti/blockchain/tree/main/store/main.go) - Store the key
+- [Transactions](https://github.com/PedroGaletti/blockchain/tree/main/transactions/main.go) - How to make transactions
 - [Wallet](https://github.com/PedroGaletti/blockchain/tree/main/wallet/main.go) - Get the key by the wallet security file
 
 ## How to use

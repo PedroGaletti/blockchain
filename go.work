@@ -4,6 +4,10 @@ use ./keys
 
 use ./balance
 
+use ./nets
+
 use ./store
+
+use ./transactions
 
 use ./wallet
