@@ -15,12 +15,12 @@ const password = "password"
 func main() {
 	b, err := os.ReadFile("wallet/UTC--2023-01-20T23-11-14.014898000Z--7f285f547f15fee627c14a44d6ad6742ff2eb645")
 	if err != nil {
-		log.Fatalf("Error to read the wallet file:%v", err)
+		log.Fatalf("Error to read the wallet file: %v", err)
 	}
 
 	key, err := keystore.DecryptKey(b, password)
 	if err != nil {
-		log.Fatalf("Error to decrypt the key:%v", err)
+		log.Fatalf("Error to decrypt the key: %v", err)
 	}
 
 	private_data := hexutil.Encode(crypto.FromECDSA(key.PrivateKey))

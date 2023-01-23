@@ -11,7 +11,7 @@ import (
 func main() {
 	private_key, err := crypto.GenerateKey()
 	if err != nil {
-		log.Fatalf("Error to generate a private key:%v", err)
+		log.Fatalf("Error to generate a private key: %v", err)
 	}
 
 	private_data := crypto.FromECDSA(private_key)

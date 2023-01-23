@@ -19,14 +19,14 @@ const (
 func main() {
 	client, err := ethclient.DialContext(context.Background(), infura_uri)
 	if err != nil {
-		log.Fatalf("Error to create a ether client:%v", err)
+		log.Fatalf("Error to create a ether client: %v", err)
 	}
 
 	defer client.Close()
 
 	block, err := client.BlockByNumber(context.Background(), nil)
 	if err != nil {
-		log.Fatalf("Error to get a block:%v", err)
+		log.Fatalf("Error to get a block: %v", err)
 	}
 
 	fmt.Println("The block number:", block.Number())
@@ -34,7 +34,7 @@ func main() {
 	address := common.HexToAddress("0x53f2Dd7Ab552bFffc4d264B69f35AEC597bd78c3")
 	balance, err := client.BalanceAt(context.Background(), address, nil)
 	if err != nil {
-		log.Fatalf("Error to get the balance:%v", err)
+		log.Fatalf("Error to get the balance: %v", err)
 	}
 
 	fmt.Println("The balance:", balance) // 1 ether == 10^18 wei

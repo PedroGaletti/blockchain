@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Contract {
@@ -32,6 +33,10 @@ contract Contract {
 
     function update(uint256 _id, string memory _content) public isOwner {
         tasks[_id].content = _content;
+    }
+
+    function toggle(uint _id) public isOwner {
+      tasks[_id].status = !tasks[_id].status;
     }
 
     function remove(uint256 _id) public isOwner {

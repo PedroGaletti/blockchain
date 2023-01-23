@@ -1,8 +1,10 @@
 go 1.19
 
-use ./keys
-
 use ./balance
+
+use ./deploy
+
+use ./keys
 
 use ./nets
 

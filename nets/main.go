@@ -21,17 +21,17 @@ func main() {
 	ks := keystore.NewKeyStore("./", keystore.StandardScryptN, keystore.StandardScryptP)
 	_, err := ks.NewAccount(password)
 	if err != nil {
-		log.Fatalf("Error to create an account - nets:%v", err)
+		log.Fatalf("Error to create an account - nets: %v", err)
 	}
 
 	_, err = ks.NewAccount(password)
 	if err != nil {
-		log.Fatalf("Error to create an account - nets:%v", err)
+		log.Fatalf("Error to create an account - nets: %v", err)
 	}
 
 	client, err := ethclient.Dial(goerli_url)
 	if err != nil {
-		log.Fatalf("Error to create a ether client:%v", err)
+		log.Fatalf("Error to create a ether client: %v", err)
 	}
 
 	defer client.Close()
@@ -41,14 +41,14 @@ func main() {
 
 	first_balance, err := client.BalanceAt(context.Background(), first_address, nil)
 	if err != nil {
-		log.Fatalf("Error to get the balance from first address:%v", err)
+		log.Fatalf("Error to get the balance from first address: %v", err)
 	}
 
 	fmt.Println("The first balance - nets:", first_balance)
 
 	second_balance, err := client.BalanceAt(context.Background(), second_address, nil)
 	if err != nil {
-		log.Fatalf("Error to get the balance from second address:%v", err)
+		log.Fatalf("Error to get the balance from second address: %v", err)
 	}
 
 	fmt.Println("The second balance - nets:", second_balance)

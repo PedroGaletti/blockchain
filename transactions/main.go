@@ -21,7 +21,7 @@ const (
 func main() {
 	client, err := ethclient.Dial(goerli_url)
 	if err != nil {
-		log.Fatalf("Error to create a ether client:%v", err)
+		log.Fatalf("Error to create a ether client: %v", err)
 	}
 
 	defer client.Close()
@@ -31,49 +31,49 @@ func main() {
 
 	first_balance, err := client.BalanceAt(context.Background(), first_address, nil)
 	if err != nil {
-		log.Fatalf("Error to get the balance from first address:%v", err)
+		log.Fatalf("Error to get the balance from first address: %v", err)
 	}
 
 	fmt.Println("The first balance - transactions:", first_balance)
 
 	second_balance, err := client.BalanceAt(context.Background(), second_address, nil)
 	if err != nil {
-		log.Fatalf("Error to get the balance from second address:%v", err)
+		log.Fatalf("Error to get the balance from second address: %v", err)
 	}
 
 	fmt.Println("The second balance - transactions:", second_balance)
 
 	first_nonce, err := client.PendingNonceAt(context.Background(), first_address)
 	if err != nil {
-		log.Fatalf("Error to get the nonce from first address - transactions:%v", err)
+		log.Fatalf("Error to get the nonce from first address - transactions: %v", err)
 	}
 
 	amount := big.NewInt(100) // 1 ether = 1,000,000,000,000,000,000  // 10 ^ 18 // 1000000000000000000
 	suggested_gas_price, err := client.SuggestGasPrice(context.Background())
 	if err != nil {
-		log.Fatalf("Error to get the suggested gas price:%v", err)
+		log.Fatalf("Error to get the suggested gas price: %v", err)
 	}
 
 	unsigned_transaction := types.NewTransaction(first_nonce, second_address, amount, 21000, suggested_gas_price, nil)
 
 	chainID, err := client.NetworkID(context.Background())
 	if err != nil {
-		log.Fatalf("Error to get the chain id:%v", err)
+		log.Fatalf("Error to get the chain id: %v", err)
 	}
 
 	content, err := os.ReadFile("transactions/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2")
 	if err != nil {
-		log.Fatalf("Error to read the wallet file - transactions:%v", err)
+		log.Fatalf("Error to read the wallet file - transactions: %v", err)
 	}
 
 	key, err := keystore.DecryptKey(content, password)
 	if err != nil {
-		log.Fatalf("Error to decrypt the key - transactions:%v", err)
+		log.Fatalf("Error to decrypt the key - transactions: %v", err)
 	}
 
 	signed_transaction, err := types.SignTx(unsigned_transaction, types.NewEIP155Signer(chainID), key.PrivateKey)
 	if err != nil {
-		log.Fatalf("Error to sign the transaction:%v", err)
+		log.Fatalf("Error to sign the transaction: %v", err)
 	}
 
 	if err := client.SendTransaction(context.Background(), signed_transaction); err != nil {

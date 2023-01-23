@@ -14,7 +14,7 @@ func main() {
 
 	account, err := key.NewAccount(password)
 	if err != nil {
-		log.Fatalf("Error to create the account:%v", err)
+		log.Fatalf("Error to create the account: %v", err)
 	}
 
 	fmt.Println("The account address:", account.Address)
