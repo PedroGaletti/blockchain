@@ -23,7 +23,7 @@ const (
 	goerli_websocket          = "wss://goerli.infura.io/ws/v3/6a7af5f9ac4d4703812a53f49b72f75e"
 	first_wallet_filepath     = "helper/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2"
 	second_wallet_filepath    = "helper/wallets/UTC--2023-01-22T22-44-59.367448000Z--af04853258a5d95d67d63d8c312d1a542a24b478"
-	contract_address          = "0x7510f7FA083d8D09211c892d978B0B08865b108b"
+	contract_address          = "0xcDF8c371243420c860A5Db509B0C6eB926c68C4E"
 	transactions_stress_times = 25
 )
 
@@ -93,7 +93,7 @@ func addTransactionToWallet(wg *sync.WaitGroup, w Wallet, chainID *big.Int, sugg
 		options.GasPrice = suggested_gas_price
 		options.Nonce = big.NewInt(int64(int64(w.Nonce) + x))
 
-		transaction, err := new_contract.Add(options, fmt.Sprintf("New task for wallet address: %s/%d", w.Address.String(), x))
+		transaction, err := new_contract.GuessNumber(options, big.NewInt(x))
 		if err != nil {
 			log.Fatalf("Error to add options in the new contract wallet address: %s - interact: %v", w.Address.String(), err)
 		}
@@ -102,12 +102,12 @@ func addTransactionToWallet(wg *sync.WaitGroup, w Wallet, chainID *big.Int, sugg
 		transactions = append(transactions, transaction.Hash())
 	}
 
-	time.Sleep(30 * time.Second)
+	time.Sleep(15 * time.Second)
 
 	for _, tx := range transactions {
 		receipt, err := client.TransactionReceipt(context.Background(), tx)
 		if err != nil {
-			log.Fatalf("Error to get receipt second_key - interact: %v", err)
+			log.Fatalf("Error to get receipt wallet address: %s - interact: %v", w.Address.String(), err)
 		}
 
 		fmt.Printf("wallet address: %s / transaction hash: %s and status: %d \n", w.Address.String(), tx.String(), receipt.Status)

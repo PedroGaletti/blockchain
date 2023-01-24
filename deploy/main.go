@@ -17,7 +17,7 @@ import (
 
 const (
 	password        = "password"
-	goerli_url      = "wss://ws.testnet.cloudwalk.io"
+	goerli_url      = "wss://goerli.infura.io/ws/v3/6a7af5f9ac4d4703812a53f49b72f75e"
 	wallet_filepath = "helper/wallets/UTC--2023-01-22T22-44-59.367448000Z--af04853258a5d95d67d63d8c312d1a542a24b478"
 )
 
