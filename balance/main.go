@@ -11,7 +11,10 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-const goerli_url = "wss://goerli.infura.io/ws/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+const (
+	goerli_url             = "wss://goerli.infura.io/ws/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	random_transaction_hex = "f9b2b8300ceda35ff834a8c05b00e471c37518f2"
+)
 
 func main() {
 	client, err := ethclient.DialContext(context.Background(), goerli_url)
@@ -28,7 +31,7 @@ func main() {
 
 	fmt.Println("The block number:", block.Number())
 
-	address := common.HexToAddress("f9b2b8300ceda35ff834a8c05b00e471c37518f2")
+	address := common.HexToAddress(random_transaction_hex)
 	balance, err := client.BalanceAt(context.Background(), address, nil)
 	if err != nil {
 		log.Fatalf("Error to get the balance: %v", err)

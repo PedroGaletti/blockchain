@@ -1,17 +1,12 @@
 go 1.19
 
-use ./balance
-
-use ./deploy
-
-use ./interact
-
-use ./keys
-
-use ./nets
-
-use ./store
-
-use ./transactions
-
-use ./wallet
+use (
+./balance
+./deploy
+./interact
+./keys
+./nets
+./store
+./transactions
+./wallet
+)
