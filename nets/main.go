@@ -13,12 +13,14 @@ import (
 /* The balance aren't cross network */
 
 const (
-	password   = "password"
-	goerli_url = "https://goerli.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	password              = "password"
+	goerli_url            = "https://goerli.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	first_wallet_address  = "f9b2b8300ceda35ff834a8c05b00e471c37518f2"
+	second_wallet_address = "af04853258a5d95d67d63d8c312d1a542a24b478"
 )
 
 func main() {
-	ks := keystore.NewKeyStore("./", keystore.StandardScryptN, keystore.StandardScryptP)
+	ks := keystore.NewKeyStore("helper/wallets", keystore.StandardScryptN, keystore.StandardScryptP)
 	_, err := ks.NewAccount(password)
 	if err != nil {
 		log.Fatalf("Error to create an account - nets: %v", err)
@@ -36,8 +38,8 @@ func main() {
 
 	defer client.Close()
 
-	first_address := common.HexToAddress("f9b2b8300ceda35ff834a8c05b00e471c37518f2")
-	second_address := common.HexToAddress("af04853258a5d95d67d63d8c312d1a542a24b478")
+	first_address := common.HexToAddress(first_wallet_address)
+	second_address := common.HexToAddress(second_wallet_address)
 
 	first_balance, err := client.BalanceAt(context.Background(), first_address, nil)
 	if err != nil {

@@ -16,12 +16,13 @@ import (
 )
 
 const (
-	password   = "password"
-	goerli_url = "https://goerli.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	password        = "password"
+	goerli_url      = "wss://ws.testnet.cloudwalk.io"
+	wallet_filepath = "helper/wallets/UTC--2023-01-22T22-44-59.367448000Z--af04853258a5d95d67d63d8c312d1a542a24b478"
 )
 
 func main() {
-	content, err := os.ReadFile("transactions/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2")
+	content, err := os.ReadFile(wallet_filepath)
 	if err != nil {
 		log.Fatalf("Error to read the wallet file - deploy: %v", err)
 	}

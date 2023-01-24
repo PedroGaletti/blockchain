@@ -11,13 +11,10 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-const (
-	infura_uri  = "https://mainnet.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
-	ganache_uri = "http://127.0.0.1:8545"
-)
+const goerli_url = "wss://goerli.infura.io/ws/v3/6a7af5f9ac4d4703812a53f49b72f75e"
 
 func main() {
-	client, err := ethclient.DialContext(context.Background(), infura_uri)
+	client, err := ethclient.DialContext(context.Background(), goerli_url)
 	if err != nil {
 		log.Fatalf("Error to create a ether client: %v", err)
 	}
@@ -31,7 +28,7 @@ func main() {
 
 	fmt.Println("The block number:", block.Number())
 
-	address := common.HexToAddress("0x53f2Dd7Ab552bFffc4d264B69f35AEC597bd78c3")
+	address := common.HexToAddress("f9b2b8300ceda35ff834a8c05b00e471c37518f2")
 	balance, err := client.BalanceAt(context.Background(), address, nil)
 	if err != nil {
 		log.Fatalf("Error to get the balance: %v", err)

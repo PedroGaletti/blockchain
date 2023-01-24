@@ -14,8 +14,11 @@ import (
 )
 
 const (
-	password   = "password"
-	goerli_url = "https://goerli.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	password              = "password"
+	goerli_url            = "https://goerli.infura.io/v3/6a7af5f9ac4d4703812a53f49b72f75e"
+	first_wallet_address  = "f9b2b8300ceda35ff834a8c05b00e471c37518f2"
+	second_wallet_address = "af04853258a5d95d67d63d8c312d1a542a24b478"
+	first_wallet_filepath = "helper/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2"
 )
 
 func main() {
@@ -26,8 +29,8 @@ func main() {
 
 	defer client.Close()
 
-	first_address := common.HexToAddress("f9b2b8300ceda35ff834a8c05b00e471c37518f2")  // address from: transactions/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2
-	second_address := common.HexToAddress("af04853258a5d95d67d63d8c312d1a542a24b478") // address from: transactions/wallets/UTC--2023-01-22T22-44-59.367448000Z--af04853258a5d95d67d63d8c312d1a542a24b478
+	first_address := common.HexToAddress(first_wallet_address)
+	second_address := common.HexToAddress(second_wallet_address)
 
 	first_balance, err := client.BalanceAt(context.Background(), first_address, nil)
 	if err != nil {
@@ -61,7 +64,7 @@ func main() {
 		log.Fatalf("Error to get the chain id: %v", err)
 	}
 
-	content, err := os.ReadFile("transactions/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2")
+	content, err := os.ReadFile(first_wallet_filepath)
 	if err != nil {
 		log.Fatalf("Error to read the wallet file - transactions: %v", err)
 	}

@@ -10,7 +10,7 @@ import (
 const password = "password"
 
 func main() {
-	key := keystore.NewKeyStore("./wallet", keystore.StandardScryptN, keystore.StandardScryptP)
+	key := keystore.NewKeyStore("helper/wallets", keystore.StandardScryptN, keystore.StandardScryptP)
 
 	account, err := key.NewAccount(password)
 	if err != nil {

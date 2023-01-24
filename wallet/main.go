@@ -10,10 +10,13 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-const password = "password"
+const (
+	wallet_filepath = "helper/wallets/UTC--2023-01-22T22-44-58.442307000Z--f9b2b8300ceda35ff834a8c05b00e471c37518f2"
+	password        = "password"
+)
 
 func main() {
-	b, err := os.ReadFile("wallet/UTC--2023-01-20T23-11-14.014898000Z--7f285f547f15fee627c14a44d6ad6742ff2eb645")
+	b, err := os.ReadFile(wallet_filepath)
 	if err != nil {
 		log.Fatalf("Error to read the wallet file: %v", err)
 	}

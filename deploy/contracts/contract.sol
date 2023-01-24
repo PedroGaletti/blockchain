@@ -11,35 +11,35 @@ contract Contract {
     }
 
     constructor() {
-        owner = msg.sender;
+        // owner = msg.sender;
     }
 
-    modifier isOwner() {
-        require(owner == msg.sender);
-        _;
-    }
+    // modifier isOwner() {
+    //     require(owner == msg.sender);
+    //     _;
+    // }
 
-    function add(string memory _content) public isOwner {
+    function add(string memory _content) public {
         tasks.push(Task(_content, false));
     }
 
-    function get(uint256 _id) public view isOwner returns (Task memory) {
+    function get(uint256 _id) public view returns (Task memory) {
         return tasks[_id];
     }
 
-    function list() public view isOwner returns (Task[] memory) {
+    function list() public view returns (Task[] memory) {
         return tasks;
     }
 
-    function update(uint256 _id, string memory _content) public isOwner {
+    function update(uint256 _id, string memory _content) public {
         tasks[_id].content = _content;
     }
 
-    function toggle(uint _id) public isOwner {
+    function toggle(uint _id) public {
       tasks[_id].status = !tasks[_id].status;
     }
 
-    function remove(uint256 _id) public isOwner {
+    function remove(uint256 _id) public {
         for (uint256 i = _id; i < tasks.length - 1; i++) {
             tasks[i] = tasks[i + 1];
         }
