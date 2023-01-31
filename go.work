@@ -3,6 +3,7 @@ go 1.19
 use (
 ./balance
 ./deploy
+./event
 ./interact
 ./keys
 ./nets
